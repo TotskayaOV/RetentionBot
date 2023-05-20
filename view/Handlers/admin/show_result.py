@@ -30,7 +30,7 @@ async def general_date_record(message: Message, state: FSMContext):
         await message.answer(text=text)
         await state.reset_data()
         await state.finish()
-    except:
-        await message.answer(text='Ошибка ввода даты')
+    except Exception as err:
+        await message.answer(text=f'Ошибка ввода даты: {err}')
         await state.reset_data()
         await state.finish()

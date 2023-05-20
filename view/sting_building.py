@@ -33,9 +33,14 @@ def string_all_result(date_obj: datetime):
         for k, v in cansel_dict.items():
             cansel_string += f"{k}: {v}\n"
     record_string = f"\nВышли в смену:\n"
+    transcription_string = "\n"
     if record_dict:
         for k, v in record_dict.items():
-            record_string += f"{k}: {v}\n"
-    return work_string + call_string + status_string + general_stirng + res_string + cansel_string + record_string
+            if type(k) == int:
+                transcription_string += f"{k} - {v}\n"
+            else:
+                record_string += f"{k}: {v}\n"
+    return work_string + call_string + status_string + general_stirng + res_string\
+        + cansel_string + record_string + transcription_string
 
 

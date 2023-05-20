@@ -172,8 +172,10 @@ def recorder_lead(date_obj: datetime):
             check_role = dict_recorder.get(elem[4], 0)
             if check_role:
                 dict_recorder[elem[4]] = check_role + 1
+                dict_recorder[elem[3]] = elem[4]
             else:
                 dict_recorder[elem[4]] = 1
+                dict_recorder[elem[3]] = elem[4]
             count_rec += 1
         dict_recorder['Вышло всего'] = count_rec
     return dict_recorder
