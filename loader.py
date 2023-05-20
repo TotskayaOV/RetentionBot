@@ -11,7 +11,7 @@ from modul import User, Call, Airtable, Comment
 memory = MemoryStorage()
 
 bot = Bot(os.getenv('TOKEN'))
-admin_id = (os.getenv('ADMIN'))
+admin_id = (os.getenv('ADMIN_ID'))
 dp = Dispatcher(bot, storage=memory)
 user_db = User()
 call_db = Call()
