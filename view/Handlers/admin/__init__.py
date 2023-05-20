@@ -5,7 +5,6 @@ from .update_work import dp
 from .update_airtable import dp
 from .added_user import dp
 from .added_contacts import dp
-from .first_start import dp
 from .new_files import dp
 
 
