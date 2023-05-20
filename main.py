@@ -1,6 +1,6 @@
 from aiogram import executor
 from view import dp
-from loader import user_db, call_db
+from loader import user_db, call_db, air_db, comm_db
 import middleware
 
 
@@ -10,6 +10,11 @@ async def on_start(_):
         user_db.create_table_users_contacts()
         call_db.create_table_call()
         call_db.create_table_working_day()
+        air_db.create_table_airtable_status()
+        air_db.create_table_airtable_comments()
+        air_db.create_table_recorded_leads()
+        comm_db.create_table_comments()
+        comm_db.create_table_results()
         print('DB connection.. OK')
     except IOError:
         print('DB connection... FAILURE!!!')
