@@ -148,8 +148,8 @@ def general_data(date_obj: datetime):
         successful_calls = round(successful_calls / quantity_work_hours, 2)
     if total_statuses:
         percentage_self_cancel = round((total_valid_cansel / total_statuses) * 100, 2)
-    if total_out_calls:
-        average_calls_candidate = round(all_calls / total_out_calls, 2)
+    if all_calls:
+        average_calls_candidate = round(total_out_calls / all_calls, 2)
     return {'candidates_per_hour': candidates_per_hour, 'successful_calls': successful_calls,
             'average_calls_candidate': average_calls_candidate, 'total_statuses': total_statuses,
             'percentage_self_cancel': percentage_self_cancel, 'total_valid_cansel': total_valid_cansel}
