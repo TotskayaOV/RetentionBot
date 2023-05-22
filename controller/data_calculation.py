@@ -131,7 +131,7 @@ def general_data(date_obj: datetime):
     succ_list = call_db.get_call(date=date_obj)
     if succ_list:
         for calls_st in succ_list:
-            if calls_st[3] == 1 or calls_st == -1:
+            if calls_st[3] == 1 or calls_st[3] == -1:
                 total_out_calls += calls_st[4]
             if calls_st[3] > 0:
                 successful_calls += calls_st[4]
