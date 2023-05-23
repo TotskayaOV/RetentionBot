@@ -27,14 +27,16 @@ def result_people_call(date_obj: datetime):
     """
     list_data = call_db.get_working_day(date=date_obj)
     if list_data:
-        count_people = len(list_data)
+        count_people = 0
         quantity_work_hours = 0
         duration_call = 0
         quantity_train_hours = 0
         for elem in list_data:
-            quantity_work_hours += elem[5]
-            duration_call += elem[3] + elem[4]
-            quantity_train_hours += elem[6]
+            if elem[7] != 1:
+                quantity_work_hours += elem[5]
+                duration_call += elem[3] + elem[4]
+                quantity_train_hours += elem[6]
+                count_people += 1
         procent_talk = round((duration_call/(quantity_work_hours-quantity_train_hours))*100, 2)
         return {'work': count_people, 'time': time_conversion(quantity_work_hours), 'procent': procent_talk}
     else:
@@ -119,7 +121,8 @@ def general_data(date_obj: datetime):
     res_pc = call_db.get_working_day(date=date_obj)
     if res_pc:
         for elem in res_pc:
-            quantity_work_hours += elem[5]
+            if elem[7] != 1:
+                quantity_work_hours += elem[5] - elem[6]
         quantity_work_hours = int(round(quantity_work_hours / 3600, 0))
     list_statuses = air_db.get_airtable_status(date=date_obj)
     if list_statuses:

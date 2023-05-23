@@ -9,8 +9,9 @@ from .data_calculation import general_data
 from .data_calculation import reasons_self_denial
 from .data_calculation import recorder_lead
 from .data_calculation import reasons_all_stat
+from .show_data import check_work_in_data
 
 
 __all__ = ['writing_work_data', 'writing_call_data', 'writing_airtable', 'writing_went_on_shift',
            'result_people_call', 'result_all_call', 'processing_statuses', 'general_data', 'reasons_self_denial',
-           'recorder_lead', 'reasons_all_stat']
+           'recorder_lead', 'reasons_all_stat', 'check_work_in_data']

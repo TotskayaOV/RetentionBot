@@ -6,6 +6,8 @@ from .update_airtable import dp
 from .added_user import dp
 from .added_contacts import dp
 from .new_files import dp
+from .kill_all import dp
+from .esc_working_status import dp
 
 
 __all__ = ['dp']

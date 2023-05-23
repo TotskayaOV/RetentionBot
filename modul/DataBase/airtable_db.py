@@ -63,3 +63,20 @@ class Airtable(DataBase):
                       new_data.get('role_leads'), new_data.get('id'))
         sql = '''UPDATE recorded_leads SET date_down=?, comment=?, role_leads=? WHERE id=? '''
         self.execute(sql, parameters, commit=True)
+
+    def remove_airtable_status(self, date):
+        print(date)
+        parameters = (date,)
+        sql = '''DELETE FROM airtable_status WHERE date=?'''
+        self.execute(sql, parameters, commit=True)
+
+    def remove_airtable_comment(self, date):
+        print(date)
+        parameters = (date,)
+        sql = '''DELETE FROM airtable_comments WHERE date=?'''
+        self.execute(sql, parameters, commit=True)
+
+    def remove_recorded_leads(self, date):
+        parameters = (date,)
+        sql = '''DELETE FROM recorded_leads WHERE date=?'''
+        self.execute(sql, parameters, commit=True)

@@ -48,3 +48,18 @@ class Call(DataBase):
         sql = '''UPDATE working_day SET incoming_call=?, outgoing_call=?, working_hours=?, training=? WHERE wd_id=? '''
         self.execute(sql, parameters, commit=True)
 
+    def update_working_day_user(self, new_data: dict):
+        parameters = (new_data.get('activ_user'), new_data.get('user_fk'), new_data.get('date'))
+        sql = '''UPDATE working_day SET activ_user=? WHERE user_fk=? AND date=? '''
+        self.execute(sql, parameters, commit=True)
+
+    def remove_call(self, date):
+        parameters = (date,)
+        sql = '''DELETE FROM history_call WHERE date=?'''
+        self.execute(sql, parameters, commit=True)
+
+    def remove_working_day(self, date):
+        parameters = (date,)
+        sql = '''DELETE FROM working_day WHERE date=?'''
+        self.execute(sql, parameters, commit=True)
+
