@@ -93,7 +93,7 @@ def writing_call_data(date_record: date):
             status = elem[0].split(" ")[0]
             time_obj = datetime.strptime(elem[2], '%H:%M:%S').time()
             total_seconds = time_obj.hour * 3600 + time_obj.minute * 60 + time_obj.second
-            if status == 'Входящий':
+            if 'Входящий' in status:
                 if total_seconds < 15:
                     in_unsuccessful += 1
                     time_in_un += total_seconds
