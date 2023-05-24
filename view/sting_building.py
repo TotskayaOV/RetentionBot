@@ -7,7 +7,8 @@ def string_all_result(date_obj: datetime):
                   f"Количество отработанных часов: {working_dict.get('time')}\n" \
                   f"Процент времени в разговоре: {working_dict.get('procent')}%\n\n"
     call_dict = result_all_call(date_obj)
-    call_string = f"Всего звонков: {call_dict.get('all')}\nВходящий успешный: {call_dict.get('in_s')}\n" \
+    call_string = f"Всего звонков: {call_dict.get('all')}\nВходящих: {call_dict.get('in_s') + call_dict.get('in_u')}\n" \
+                  f"успешные - {call_dict.get('in_s')}\nнеуспешные - {call_dict.get('in_u')}\n" \
                   f"Исходящий успешный: {call_dict.get('out_s')}\nИсходящий неуспешный: {call_dict.get('out-u')}\n" \
                   f"Процент дозвона по исходящим: {call_dict.get('perc')}\n\n"
     status_dict = processing_statuses(date_obj)

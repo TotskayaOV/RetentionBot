@@ -66,7 +66,6 @@ def result_all_call(date_obj):
                 case -2: in_unsuccessful = elem[4]
         all_call = in_successful + in_unsuccessful + out_successful + out_unsuccessful
         dial_up_percent = round(out_successful/(out_unsuccessful+out_successful)*100, 2)
-        uniq_numbers = round((out_successful + out_unsuccessful) / uniq_numbers, 2)
     return {'all': all_call, 'in_s': in_successful, 'in_u': in_unsuccessful, 'uniq': uniq_numbers,
             'out_s': out_successful, 'out-u': out_unsuccessful, 'perc': dial_up_percent}
 
@@ -131,15 +130,11 @@ def general_data(date_obj: datetime):
                 total_cansel += record_st[3]
             if record_st[2] > 2:
                 total_statuses += record_st[3]
-    succ_list = call_db.get_call(date=date_obj)
-    if succ_list:
-        for calls_st in succ_list:
-            if calls_st[3] == 1 or calls_st[3] == -1:
-                total_out_calls += calls_st[4]
-            if calls_st[3] > 0:
-                successful_calls += calls_st[4]
-            if calls_st[3] == 0:
-                all_calls += calls_st[4]
+    succ_dict = result_all_call(date_obj)
+    if succ_dict:
+        total_out_calls = succ_dict.get('out-u') + succ_dict.get('out_s')
+        successful_calls = succ_dict.get('out_s') + succ_dict.get('in_s')
+        all_calls = succ_dict.get('uniq')
     list_comment = air_db.get_airtable_comment(date=date_obj)
     if list_comment:
         for comm_st in list_comment:

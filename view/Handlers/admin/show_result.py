@@ -22,7 +22,7 @@ async def add_date(message: Message, admin: bool):
 
 @dp.message_handler(state=ShowRes.general_date, content_types=ContentTypes.ANY)
 async def general_date_record(message: Message, state: FSMContext):
-    try:
+    # try:
         data_obj = message.text
         date_update = datetime.strptime(data_obj, '%Y-%m-%d').date()
         await message.answer(text=f'Выгрузка за: {data_obj}.')
@@ -30,7 +30,7 @@ async def general_date_record(message: Message, state: FSMContext):
         await message.answer(text=text)
         await state.reset_data()
         await state.finish()
-    except Exception as err:
-        await message.answer(text=f'Ошибка ввода даты: {err}')
-        await state.reset_data()
-        await state.finish()
+    # # except Exception as err:
+    #     await message.answer(text=f'Ошибка ввода даты: {err}')
+    #     await state.reset_data()
+    #     await state.finish()
