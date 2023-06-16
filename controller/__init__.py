@@ -10,8 +10,10 @@ from .data_calculation import reasons_self_denial
 from .data_calculation import recorder_lead
 from .data_calculation import reasons_all_stat
 from .show_data import check_work_in_data
+from .show_data import show_date_data_db
+from .show_data import show_full_data_db
 
 
 __all__ = ['writing_work_data', 'writing_call_data', 'writing_airtable', 'writing_went_on_shift',
            'result_people_call', 'result_all_call', 'processing_statuses', 'general_data', 'reasons_self_denial',
-           'recorder_lead', 'reasons_all_stat', 'check_work_in_data']
+           'recorder_lead', 'reasons_all_stat', 'check_work_in_data', 'show_full_data_db', 'show_date_data_db']
