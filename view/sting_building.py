@@ -41,7 +41,7 @@ def string_all_result(date_obj: datetime):
                 transcription_string += f"{k} - {v}\n"
             else:
                 record_string += f"{k}: {v}\n"
-    return work_string + call_string + status_string + general_stirng + res_string\
-        + cansel_string + record_string + transcription_string
+    return [work_string + call_string + status_string + general_stirng + res_string + cansel_string,
+            record_string + transcription_string]
 
 

@@ -26,8 +26,9 @@ async def general_date_record(message: Message, state: FSMContext):
         data_obj = message.text
         date_update = datetime.strptime(data_obj, '%Y-%m-%d').date()
         await message.answer(text=f'Выгрузка за: {data_obj}.')
-        text = string_all_result(date_update)
-        await message.answer(text=text)
+        text_list = string_all_result(date_update)
+        for elem in text_list:
+            await message.answer(text=elem)
         await state.reset_data()
         await state.finish()
     # # except Exception as err:
